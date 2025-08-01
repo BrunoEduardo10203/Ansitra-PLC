@@ -1,0 +1,229 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
+	<RootNamespace>AnsitraPLC_QR_MIT</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x86;x64;ARM64</Platforms>
+    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &gt;= 8">win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
+    <UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <DefaultLanguage>pt-br</DefaultLanguage>
+    <GenerateAppInstallerFile>True</GenerateAppInstallerFile>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <PackageCertificateThumbprint>50BC790FAA7A45124892AF9706AEF9256EDA8A92</PackageCertificateThumbprint>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Never</AppxBundle>
+    <AppInstallerUri>C:\Users\Stine\Desktop\Att do Ansitra</AppInstallerUri>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="NovaPasta1\**" />
+    <EmbeddedResource Remove="NovaPasta1\**" />
+    <None Remove="NovaPasta1\**" />
+    <Page Remove="NovaPasta1\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="AfericaoPage.xaml.cs" />
+    <Compile Remove="BandoDados.xaml.cs" />
+    <Compile Remove="BlankPage1.xaml.cs" />
+    <Compile Remove="Class1.cs" />
+    <Compile Remove="EquipamentosPage.xaml.cs" />
+    <Compile Remove="Faixas.xaml.cs" />
+    <Compile Remove="FiltroAlarmesPage.xaml.cs" />
+    <Compile Remove="UserControl1.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="AfericaoPage.xaml" />
+    <None Remove="AlarmesPage.xaml" />
+    <None Remove="Assets\BadgeLogo.scale-100.png" />
+    <None Remove="Assets\BadgeLogo.scale-125.png" />
+    <None Remove="Assets\BadgeLogo.scale-150.png" />
+    <None Remove="Assets\BadgeLogo.scale-200.png" />
+    <None Remove="Assets\BadgeLogo.scale-400.png" />
+    <None Remove="Assets\LargeTile.scale-100.png" />
+    <None Remove="Assets\LargeTile.scale-125.png" />
+    <None Remove="Assets\LargeTile.scale-150.png" />
+    <None Remove="Assets\LargeTile.scale-200.png" />
+    <None Remove="Assets\LargeTile.scale-400.png" />
+    <None Remove="Assets\SmallTile.scale-100.png" />
+    <None Remove="Assets\SmallTile.scale-125.png" />
+    <None Remove="Assets\SmallTile.scale-150.png" />
+    <None Remove="Assets\SmallTile.scale-200.png" />
+    <None Remove="Assets\SmallTile.scale-400.png" />
+    <None Remove="Assets\Square150x150Logo.scale-100.png" />
+    <None Remove="Assets\Square150x150Logo.scale-125.png" />
+    <None Remove="Assets\Square150x150Logo.scale-150.png" />
+    <None Remove="Assets\Square150x150Logo.scale-200.png" />
+    <None Remove="Assets\Square150x150Logo.scale-400.png" />
+    <None Remove="Assets\Square44x44Logo.scale-100.png" />
+    <None Remove="Assets\Square44x44Logo.scale-125.png" />
+    <None Remove="Assets\Square44x44Logo.scale-150.png" />
+    <None Remove="Assets\Square44x44Logo.scale-200.png" />
+    <None Remove="Assets\Square44x44Logo.scale-400.png" />
+    <None Remove="Assets\Square44x44Logo.targetsize-16.png" />
+    <None Remove="Assets\Square44x44Logo.targetsize-24.png" />
+    <None Remove="Assets\Square44x44Logo.targetsize-256.png" />
+    <None Remove="Assets\Square44x44Logo.targetsize-32.png" />
+    <None Remove="Assets\Square44x44Logo.targetsize-48.png" />
+    <None Remove="Assets\StoreLogo.scale-100.png" />
+    <None Remove="Assets\StoreLogo.scale-125.png" />
+    <None Remove="Assets\StoreLogo.scale-150.png" />
+    <None Remove="Assets\StoreLogo.scale-200.png" />
+    <None Remove="Assets\StoreLogo.scale-400.png" />
+    <None Remove="Assets\Wide310x150Logo.scale-100.png" />
+    <None Remove="Assets\Wide310x150Logo.scale-125.png" />
+    <None Remove="Assets\Wide310x150Logo.scale-150.png" />
+    <None Remove="Assets\Wide310x150Logo.scale-200.png" />
+    <None Remove="Assets\Wide310x150Logo.scale-400.png" />
+    <None Remove="BancoPage.xaml" />
+    <None Remove="BandoDados.xaml" />
+    <None Remove="BlankPage1.xaml" />
+    <None Remove="ClassePage.xaml" />
+    <None Remove="ConexaoPage.xaml" />
+    <None Remove="ConfiguracoesPage.xaml" />
+    <None Remove="ContagemPage.xaml" />
+    <None Remove="DadosEstacaoPage.xaml" />
+    <None Remove="EquipamentosPage.xaml" />
+    <None Remove="Faixas.xaml" />
+    <None Remove="FaixasPage.xaml" />
+    <None Remove="FiltroAlarmesPage.xaml" />
+    <None Remove="FiltrosPage.xaml" />
+    <None Remove="LacosPage.xaml" />
+    <None Remove="MonitoramentoPage.xaml" />
+    <None Remove="UserControl1.xaml" />
+    <None Remove="UserControl2.xaml" />
+    <None Remove="VeiculoPage.xaml" />
+    <None Remove="XMLFile1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Remove="AfericaoPage.xaml" />
+    <Page Remove="BandoDados.xaml" />
+    <Page Remove="BlankPage1.xaml" />
+    <Page Remove="EquipamentosPage.xaml" />
+    <Page Remove="Faixas.xaml" />
+    <Page Remove="FiltroAlarmesPage.xaml" />
+    <Page Remove="UserControl1.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250310001" />
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <!--
+    Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
+    Tools extension to be activated for this project even if the Windows App SDK Nuget
+    package has not yet been restored.
+  -->
+  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="AlarmesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="FiltrosPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ClassePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="LacosPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="BancoPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="MonitoramentoPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ConfiguracaoSistemaPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControl2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <!--
+    Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution
+    Explorer "Package and Publish" context menu entry to be enabled for this project even if
+    the Windows App SDK Nuget package has not yet been restored.
+  -->
+  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+  </PropertyGroup>
+  <ItemGroup>
+    <Page Update="FaixasPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ConexaoPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ContagemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VeiculoPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
+    <Content Remove="Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
+    <Content Remove="Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
+    <Content Remove="Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
+    <Content Remove="Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
+    <Content Remove="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Remove="Assets\Square44x44Logo.altform-unplated_targetsize-24.png" />
+    <Content Remove="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Remove="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Remove="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DadosEstacaoPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ConfiguracoesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="NovaPasta1\**" />
+  </ItemGroup>
+</Project>

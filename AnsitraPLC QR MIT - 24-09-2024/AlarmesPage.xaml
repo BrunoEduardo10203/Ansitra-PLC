@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AnsitraPLC_QR_MIT.AlarmesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AnsitraPLC_QR_MIT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+            
+    NavigationCacheMode="Enabled"
+    Background="#324848">
+
+    <Grid>
+        <TextBlock Text="Alarmes" FontSize="28" FontWeight="SemiBold" Margin="100,20,0,0"/>
+
+        <Button x:Name="btn_moniAlarme" Click="btn_moniAlarme_Click" Style="{StaticResource AccentButtonStyle}" Content="Monitorar alarmes" Margin="555,100,0,0" VerticalAlignment="Top"></Button>
+        <Button x:Name="btn_pararMoniAlarme" Click="btn_pararMoniAlarme_Click" Style="{StaticResource AccentButtonStyle}" Content="Parar monitoramento de alarmes" Margin="510,100,0,0" VerticalAlignment="Top" Visibility="Collapsed"></Button>
+
+        <AppBarButton x:Name="btn_filtro"
+                      Margin="750,93,0,0"
+                      Width="60"
+                      Height="60"
+                      IsCompact="True">
+            <AppBarButton.Icon>
+                <SymbolIcon Symbol="Filter"/>
+            </AppBarButton.Icon>
+            
+            <AppBarButton.Flyout>
+                <Flyout Placement="Right">
+                    <StackPanel Padding="10" MinWidth="150">
+                        <TextBlock Text="Escolha os filtros:" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <CheckBox Content="Falta AC"                Checked="cbx_Checked" Unchecked="cbx_Unchecked"/>
+                        <CheckBox Content="PC NTCPIP"               Checked="cbx_Checked" Unchecked="cbx_Unchecked"/>
+                        <CheckBox Content="Excesso de Temperatura"  Checked="cbx_Checked" Unchecked="cbx_Unchecked"/>
+                        <CheckBox Content="Tensão Bateria"          Checked="cbx_Checked" Unchecked="cbx_Unchecked"/>
+                    </StackPanel>
+                </Flyout>
+            </AppBarButton.Flyout>
+        </AppBarButton>
+
+
+        <!--NTCIP-->
+        <Grid x:Name="gd_ntcip"
+              Background="Gray"
+              Width="200"
+              Height="50"
+              Margin="152,150,0,0"
+              CornerRadius="12"
+              BorderBrush="White"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"
+              BorderThickness="2">
+
+            <TextBlock Text="NTCIP" Margin="14" TextAlignment="Center"></TextBlock>
+        </Grid>
+
+        <!--SD CARD-->
+        <Grid x:Name="gd_sdCard"
+              Background="Gray"
+              Width="200"
+              Height="50"
+              Margin="400,150,0,0"
+              CornerRadius="12"
+              BorderBrush="White"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"
+              BorderThickness="2">
+
+            <TextBlock Text="SD CARD" Margin="14" TextAlignment="Center"></TextBlock>
+        </Grid>
+
+        <!--BATERIA PLC-->
+        <Grid x:Name="gd_bateriaPlc"
+              Background="Gray"
+              Width="200"
+              Height="50"
+              Margin="650,150,0,0"
+              CornerRadius="12"
+              BorderBrush="White"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"
+              BorderThickness="2">
+
+            <TextBlock Text="Bateria PLC" Margin="14" TextAlignment="Center"></TextBlock>
+        </Grid>
+
+        <!--Módulo Analógico PLC-->
+        <Grid x:Name="gd_moduloPlc"
+              Background="Gray"
+              Width="200"
+              Height="50"
+              Margin="900,150,0,0"
+              CornerRadius="12"
+              BorderBrush="White"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"
+              BorderThickness="2">
+
+            <TextBlock Text="Módulo Analógico PLC" Margin="14" TextAlignment="Center"></TextBlock>
+        </Grid>
+
+        <!--ENERGIA-->
+        <Grid x:Name="gd_energia"
+              Background="Gray"
+              Width="200"
+              Height="50"
+              Margin="270,250,0,0"
+              CornerRadius="12"
+              BorderBrush="White"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"
+              BorderThickness="2">
+
+            <TextBlock Text="Energia" Margin="14" TextAlignment="Center"></TextBlock>
+        </Grid>
+        
+        <!--PORTA-->
+        <Grid x:Name="gd_porta"
+              Background="Gray"
+              Width="200"
+              Height="50"
+              Margin="530,250,0,0"
+              CornerRadius="12"
+              BorderBrush="White"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"
+              BorderThickness="2">
+
+            <TextBlock Text="Porta" Margin="14" TextAlignment="Center"></TextBlock>
+        </Grid>
+        
+        <!--Excesso de Temperatura-->
+        <Grid x:Name="gd_temperatura"
+              Background="Gray"
+              Width="200"
+              Height="50"
+              Margin="780,250,0,0"
+              CornerRadius="12"
+              BorderBrush="White"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"
+              BorderThickness="2">
+
+            <TextBlock Text="Excesso de Temperatura" Margin="14" TextAlignment="Center"></TextBlock>
+        </Grid>
+        
+        <!--Detector 1-->
+        <Grid Width="200"
+              Height="290"
+              Margin="150,320,0,0"
+              CornerRadius="12"
+              BorderBrush="White"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"
+              BorderThickness="2">
+
+            <TextBlock Text="Detector 1" Margin="14" TextAlignment="Center"></TextBlock>
+
+            <Border x:Name="equipamento1"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,50,10,190"
+                    Background="Transparent">
+
+                <TextBox x:Name="txtEquipamento1"
+                         Text="{Binding NomeFaixa1, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         IsTabStop="False"
+                         Foreground="White"
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"
+                         BorderThickness="0"/>
+            </Border>
+
+            <Border x:Name="equipamento2"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,100,10,140">
+                <TextBox x:Name="txtEquipamento2"
+                         Text="{Binding NomeFaixa2, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         IsTabStop="False"                         
+                         Foreground="White"
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+
+            <Border x:Name="equipamento3"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,150,10,90">
+                <TextBox x:Name="txtEquipamento3"
+                         Text="{Binding NomeFaixa3, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         IsTabStop="False"                         
+                         Foreground="White"
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+
+            <Border x:Name="equipamento4"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,200,10,40">
+                <TextBox x:Name="txtEquipamento4"
+                         Text="{Binding NomeFaixa4, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         IsTabStop="False"                         
+                         Foreground="White"
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+
+        </Grid>
+
+        <!--Detector 2-->
+        <Grid Width="200"
+              Height="290"
+              Margin="400,320,0,0"
+              CornerRadius="12"
+              BorderBrush="White"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"
+              BorderThickness="2">
+
+            <TextBlock Text="Detector 2" Margin="14" TextAlignment="Center"></TextBlock>
+
+            <Border x:Name="equipamento5"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,50,10,190">
+                <TextBox x:Name="txtEquipamento5"
+                         Text="{Binding NomeFaixa5, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         Foreground="White"
+                         IsTabStop="False"                         
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+
+            <Border x:Name="equipamento6"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,100,10,140">
+                <TextBox x:Name="txtEquipamento6"
+                         Text="{Binding NomeFaixa6, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         Foreground="White"
+                         IsTabStop="False"                         
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+
+            <Border x:Name="equipamento7"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,150,10,90">
+                <TextBox x:Name="txtEquipamento7"
+                         Text="{Binding NomeFaixa7, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         Foreground="White"
+                         IsTabStop="False"                         
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+
+            <Border x:Name="equipamento8"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,200,10,40">
+                <TextBox x:Name="txtEquipamento8"
+                         Text="{Binding NomeFaixa8, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         Foreground="White"
+                         IsTabStop="False"                         
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+        </Grid>
+
+        <!--Detector 3-->
+        <Grid Width="200"
+              Height="290"
+              Margin="650,320,0,0"
+              CornerRadius="12"
+              BorderBrush="White"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"
+              BorderThickness="2">
+
+            <TextBlock Text="Detector 3" Margin="14" TextAlignment="Center"></TextBlock>
+
+            <Border x:Name="equipamento9"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,50,10,190">
+                <TextBox x:Name="txtEquipamento9"
+                         Text="{Binding NomeFaixa9, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         Foreground="White"
+                         IsTabStop="False"                         
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+
+            <Border x:Name="equipamento10"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,100,10,140">
+                <TextBox x:Name="txtEquipamento10"
+                         Text="{Binding NomeFaixa10, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         Foreground="White"
+                         IsTabStop="False"                         
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+
+            <Border x:Name="equipamento11"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,150,10,90">
+                <TextBox x:Name="txtEquipamento11"
+                         Text="{Binding NomeFaixa11, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         Foreground="White"
+                         IsTabStop="False"                         
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+
+            <Border x:Name="equipamento12"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,200,10,40">
+                <TextBox x:Name="txtEquipamento12"
+                         Text="{Binding NomeFaixa12, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         Foreground="White"
+                         IsTabStop="False"                         
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+        </Grid>
+
+        <!--Detector 4-->
+        <Grid Width="200"
+              Height="290"
+              Margin="900,320,0,0"
+              CornerRadius="12"
+              BorderBrush="White"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"
+              BorderThickness="2">
+
+            <TextBlock Text="Detector 4" Margin="14" TextAlignment="Center"></TextBlock>
+
+            <Border x:Name="equipamento13"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,50,10,190">
+                <TextBox x:Name="txtEquipamento13"
+                         Text="{Binding NomeFaixa13, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         Foreground="White"
+                         IsTabStop="False"                         
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+
+            <Border x:Name="equipamento14"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,100,10,140">
+                <TextBox x:Name="txtEquipamento14"
+                         Text="{Binding NomeFaixa14, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         Foreground="White"
+                         IsTabStop="False"                         
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+
+            <Border x:Name="equipamento15"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,150,10,90">
+                <TextBox x:Name="txtEquipamento15"
+                         Text="{Binding NomeFaixa15, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         Foreground="White"
+                         IsTabStop="False"                         
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+
+            <Border x:Name="equipamento16"
+                    BorderBrush="White"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10,200,10,40">
+                <TextBox x:Name="txtEquipamento16"
+                         Text="{Binding NomeFaixa16, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         Foreground="White"
+                         IsTabStop="False"                         
+                         IsReadOnly="True"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         TextChanged="nomeEquipamento_TextChanged"
+                         Background="Transparent"   
+                         BorderThickness="0"
+                         VerticalAlignment="Center"/>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>

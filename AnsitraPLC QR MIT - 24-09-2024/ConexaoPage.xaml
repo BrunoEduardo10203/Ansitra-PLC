@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AnsitraPLC_QR_MIT.ConexaoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AnsitraPLC_QR_MIT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    NavigationCacheMode="Enabled"
+    Background="#324848">   
+
+    <Grid>
+
+        <Grid Background="#2F4F4F"
+              Margin="0,0,0,390"
+              Width="270"
+              Height="80"
+              CornerRadius="12"
+              BorderBrush="Gray"
+              BorderThickness="3">
+
+            <TextBlock Text="IP do servidor" HorizontalAlignment="Left" Margin="20,6,0,0" FontSize="11"/>
+            <TextBox x:Name="txbx_AltearIP" Width="150" Height="0"  Margin="0,10,90,0" PlaceholderText="     255.255.255.0"/>
+            <Button x:Name="btn_AlteraIP" Click="btn_AlteraIP_Click" Style="{StaticResource AccentButtonStyle}" Content="Alterar IP" Margin="0,10,5,0" HorizontalAlignment="Right"/>
+        </Grid>
+
+        <Grid x:Name="box1"
+              Background="#2F4F4F"
+              Margin="0,0,350,100"
+              Width="350"
+              Height="180"
+              CornerRadius="12"
+              BorderBrush="Gray"
+              BorderThickness="3">
+            
+            <TextBlock Text="IP :" HorizontalAlignment="Left" Margin="20,10,0,0" FontSize="11"/>
+            <TextBox x:Name="ip_PLC" Text="{Binding EstacaoSelecionada.IpPlc, Mode=TwoWay}" Width="150" Height="30" Margin="10,0,0,90" PlaceholderText="     255.255.255.0" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Gateway :" HorizontalAlignment="Center" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="11"/>
+            <TextBox x:Name="gateway_PLC" Text="{Binding EstacaoSelecionada.IpGateWay, Mode=TwoWay}" Width="150" Height="30" Margin="170,26,0,0" PlaceholderText="     255.255.255.0" VerticalAlignment="Top"/>
+
+            <TextBlock x:Name="txb_nomeCaixa1" Text="PLC" FontSize="20" VerticalAlignment="Center" Margin="40,30,0,0"/>
+            <TextBlock Text="{Binding EstacaoSelecionada.Tipo, Mode=TwoWay}" FontSize="20" VerticalAlignment="Center" Margin="80,30,0,0"/>
+
+            <TextBlock Text="Mask :" HorizontalAlignment="Center" Margin="60,0,0,20" FontSize="11" VerticalAlignment="Center"/>
+            <TextBox x:Name="mask_PLC" Text="{Binding EstacaoSelecionada.IpMascara, Mode=TwoWay}" Width="150" Height="30" Margin="170,30,0,0" PlaceholderText="     255.255.255.0"/>
+            
+            <Button x:Name="btn_GravarPLC"
+                    Click="btn_GravarPLC_Click"
+                    Content="Gravar Rede"                    
+                    Style="{StaticResource AccentButtonStyle}" 
+                    Margin="0,0,0,10" VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center" 
+                    Width="200"/>
+
+        </Grid>
+
+        <Grid x:Name="box2"
+              Background="#2F4F4F"
+              Margin="400,0,0,100"
+              Width="350"
+              Height="180"
+              CornerRadius="12"
+              BorderBrush="Gray"
+              BorderThickness="3">
+
+            <TextBlock Text="IP :" HorizontalAlignment="Left" Margin="20,10,0,0" FontSize="11"/>
+            <TextBox x:Name="txb_ipModulo" Text="{Binding EstacaoSelecionada.IpModulo, Mode=TwoWay}" Width="150" Height="30" Margin="10,0,0,90" PlaceholderText="     255.255.255.0" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Gateway :" HorizontalAlignment="Center" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="11"/>
+            <TextBox x:Name="txb_gatewayModulo" Text="{Binding EstacaoSelecionada.GatewayModulo, Mode=TwoWay}" Width="150" Height="30" Margin="170,26,0,0" PlaceholderText="     255.255.255.0" VerticalAlignment="Top"/>
+
+            <TextBlock x:Name="txb_nomeCaixa2" Text="Módulo RD 55" FontSize="20" VerticalAlignment="Center" Margin="25,30,0,0"/>
+            
+            <TextBlock Text="Mask :" HorizontalAlignment="Center" Margin="60,0,0,20" FontSize="11" VerticalAlignment="Center"/>
+            <TextBox x:Name="txb_maskModulo" Text="{Binding EstacaoSelecionada.MaskModulo, Mode=TwoWay}" Width="150" Height="30" Margin="170,30,0,0" PlaceholderText="     255.255.255.0"/>
+
+            <Button x:Name="btn_GravarModulo"
+                    Click="btn_GravarModulo_Click"
+                    Content="Gravar Rede"
+                    Style="{StaticResource AccentButtonStyle}" 
+                    Margin="0,0,0,10" VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center" 
+                    Width="200"/>
+
+        </Grid>
+
+        <Grid x:Name="box3"
+              Background="#2F4F4F"
+              Margin="0,300,350,0"
+              Visibility="Visible"
+              Width="350"
+              Height="180"
+              CornerRadius="12"
+              BorderBrush="Gray"
+              BorderThickness="3">
+
+            <TextBlock Text="IP :" HorizontalAlignment="Left" Margin="20,10,0,0" FontSize="11"/>
+            <TextBox x:Name="ip_plc2" Text="{Binding IpPlc2, Mode=TwoWay}" Width="150" Height="30" Margin="10,0,0,90" PlaceholderText="     255.255.255.0" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Gateway :" HorizontalAlignment="Center" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="11"/>
+            <TextBox x:Name="gateway_plc2" Text="{Binding GatewayPlc2, Mode=TwoWay}" Width="150" Height="30" Margin="170,26,0,0" PlaceholderText="     255.255.255.0" VerticalAlignment="Top"/>
+
+            <TextBlock Text="PLC 2" FontSize="20" VerticalAlignment="Center" Margin="40,30,0,0"/>
+            <TextBlock FontSize="20" VerticalAlignment="Center" Margin="80,30,0,0"/>
+
+            <TextBlock Text="Mask :" HorizontalAlignment="Center" Margin="60,0,0,20" FontSize="11" VerticalAlignment="Center"/>
+            <TextBox x:Name="mask_plc2" Text="{Binding MaskPlc2, Mode=TwoWay}" Width="150" Height="30" Margin="170,30,0,0" PlaceholderText="     255.255.255.0"/>
+
+            <Button x:Name="btn_Sensor1"
+                    Click="btn_Sensor1_Click"
+                    Style="{StaticResource AccentButtonStyle}" 
+                    Content="Gravar Rede"
+                    Margin="0,0,0,10" VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center" 
+                    Width="200"/>
+
+        </Grid>
+
+
+        <Grid x:Name="box4"
+              Background="#2F4F4F"
+              Margin="400,300,0,0"
+              Width="350"
+              Visibility="Visible"              
+              Height="180"
+              CornerRadius="12"
+              BorderBrush="Gray"
+              BorderThickness="3">
+
+            <TextBlock Text="IP :" HorizontalAlignment="Left" Margin="20,10,0,0" FontSize="11"/>
+            <TextBox x:Name="ip_sensor2" Text="{Binding IpSensor2, Mode=TwoWay}" Width="150" Height="30" Margin="10,0,0,90" PlaceholderText="     255.255.255.0" HorizontalAlignment="Left"/>
+
+            <TextBlock Text="Gateway :" HorizontalAlignment="Center" Margin="70,10,0,0" VerticalAlignment="Top" FontSize="11"/>
+            <TextBox x:Name="mask_sensor2" Text="{Binding MaskSensor2, Mode=TwoWay}" Width="150" Height="30" Margin="170,26,0,0" PlaceholderText="     255.255.255.0" VerticalAlignment="Top"/>
+
+            <TextBlock Text="Sensor 2" FontSize="20" VerticalAlignment="Center" Margin="25,30,0,0"/>
+
+            <TextBlock Text="Mask :" HorizontalAlignment="Center" Margin="60,0,0,20" FontSize="11" VerticalAlignment="Center"/>
+            <TextBox x:Name="gateway_sensor2" Text="{Binding GatewaySensor2, Mode=TwoWay}"  Width="150" Height="30" Margin="170,30,0,0" PlaceholderText="     255.255.255.0"/>
+
+            <Button x:Name="btn_Sensor2"
+                    Click="btn_Sensor2_Click"
+                    Content="Gravar Rede"
+                    Style="{StaticResource AccentButtonStyle}" 
+                    Margin="0,0,0,10" VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center" 
+                    Width="200"/>
+
+        </Grid>
+    </Grid>
+</Page>

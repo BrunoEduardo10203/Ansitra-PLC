@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="AnsitraPLC_QR_MIT.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AnsitraPLC_QR_MIT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Stine - Ansitra PLC"
+    mc:Ignorable="d">
+
+
+    <Grid x:Name="RootGrid">
+        <!-- Navegação -->
+        <NavigationView x:Name="nav_control"
+                        SelectionChanged="control_nav_SelectionChange"
+                        PaneClosing="navi_control_PaneClosed"
+                        PaneOpening="navi_control_PaneOpening"
+                        ItemInvoked="nav_item_ItemInvoked"
+                        Grid.Row="1"                        
+                        PaneDisplayMode="Left"
+                        IsTabStop="False"
+                        IsBackButtonVisible="Collapsed"
+                        AlwaysShowHeader="True"
+                        IsSettingsVisible="True"
+                        Background="DarkSlateGray">
+
+
+            <NavigationView.Header>
+                <StackPanel Orientation="Horizontal">
+                    <!--Imagem-->
+                    <Image Source="Assets/logo_stine.png" Margin="0,0,0,0" Width="150" Height="100"/>
+
+                    <TextBlock x:Name="txt_ip"
+                               Text="IP:"
+                               FontSize="18" 
+                               FontStyle="Italic" 
+                               HorizontalAlignment="Center" 
+                               Margin="30,30,0,0" />
+
+                    <TextBlock x:Name="txt_ipValor"
+                               Text=""
+                               FontSize="18" 
+                               FontStyle="Italic" 
+                               HorizontalAlignment="Center" 
+                               Margin="5,30,0,0" />
+
+                    <TextBlock x:Name="txt_porta"
+                               Text="Porta:"                      
+                               FontSize="18" 
+                               FontStyle="Italic" 
+                               HorizontalAlignment="Center" 
+                               Margin="30,30,0,0" />
+
+                    <TextBlock x:Name="txt_portaValor"
+                               Text=""
+                               FontSize="18" 
+                               FontStyle="Italic" 
+                               HorizontalAlignment="Center" 
+                               Margin="5,30,0,0" />
+
+
+                    <TextBlock Text="Numero:"
+                               FontSize="18" 
+                               FontStyle="Italic" 
+                               HorizontalAlignment="Center" 
+                               Margin="120,30,0,0" />
+
+                    <TextBlock x:Name="txt_numeroValor"
+                               Text=""
+                               FontSize="18" 
+                               FontStyle="Italic" 
+                               HorizontalAlignment="Center" 
+                               Margin="5,30,0,0" />
+
+                    <TextBlock Text="Rodovia:"
+                               FontSize="18" 
+                               FontStyle="Italic" 
+                               HorizontalAlignment="Center" 
+                               Margin="30,30,0,0" />
+
+                    <TextBlock x:Name="txt_rodoviaValor"
+                               Text=""
+                               FontSize="18" 
+                               FontStyle="Italic" 
+                               HorizontalAlignment="Center" 
+                               Margin="3,30,0,0" />
+
+                    <TextBlock Text="Km:"
+                               FontSize="18" 
+                               FontStyle="Italic" 
+                               HorizontalAlignment="Center" 
+                               Margin="30,30,0,0" />
+
+                    <TextBlock x:Name="txt_kmValor"
+                               Text=""
+                               FontSize="18"                           
+                               FontStyle="Italic" 
+                               HorizontalAlignment="Center" 
+                               Margin="5,30,0,0" />
+
+                    <Button x:Name="btn_Equipamento" Click="btn_Equipamento_Click" Content="Selec/Equip" Margin="140,0,0,0"></Button>
+                </StackPanel>
+            </NavigationView.Header>
+
+            <NavigationView.MenuItems>
+                <!-- Conexão -->
+                <NavigationViewItem x:Name="nav_item_conexao"
+                                    ToolTipService.ToolTip="Conexão"
+                                    Tag="item_conexao"                                
+                                    Icon="FourBars">
+
+                    <Expander x:Name="Conexao"
+                              ExpandDirection="Up"
+                              Width="320"
+                              Margin="0,0,-31,0"
+                              HorizontalAlignment="Stretch">
+                        <Expander.Header>
+                            <ToggleButton x:Name="btn_Conexao"
+                                          Click="ToggleButton_Click"
+                                          IsEnabled="False"
+                                          Content="Conectar"
+                                          Width="220"
+                                          Margin="-25,0,-20,0"
+                                          HorizontalAlignment="Center"/>
+                        </Expander.Header>
+                        <Expander.Content>
+                            <Grid>
+                                <TextBox x:Name="txb_ip"
+                                         TextChanged="habilita_BtnConexao"
+                                         Width="147"
+                                         PlaceholderText="IP"
+                                         HorizontalAlignment="Center"
+                                         Margin="0,0,130,0"/>
+
+                                <TextBox x:Name="txb_porta"
+                                         InputScope="Number"
+                                         TextChanged="habilita_BtnConexao"
+                                         Width="10"
+                                         PlaceholderText="Porta"
+                                         HorizontalAlignment="Right"
+                                         Margin="0,0,50,0"/>
+                            </Grid>
+                        </Expander.Content>
+                    </Expander>
+                </NavigationViewItem>
+                
+                <!-- Arquivos -->
+                <NavigationViewItem x:Name="nav_item_arquivos"
+                                    ToolTipService.ToolTip="Arquivos"
+                                    Tag="Arquivos">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8E5;" />
+                    </NavigationViewItem.Icon>
+
+                    <Expander x:Name="Arquivos"                              
+                              ExpandDirection="Up"
+                              Width="320"
+                              Margin="0,0,-31,0"
+                              HorizontalAlignment="Stretch">
+
+                        <!-- Cabeçalho do Expander -->
+                        <Expander.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="btn_importar" Click="btn_importar_Click" Content="Importar" Margin="10,0,0,0" Width="100"/>
+                                <Button x:Name="btn_salvar" Click="btn_salvar_Click" Content="Salvar" Margin="18,0,0,0" Width="100"/>
+                            </StackPanel>
+                        </Expander.Header>
+
+                        <!-- Conteúdo do Expander -->
+                        <Expander.Content>
+                            <StackPanel>
+                                <ComboBox x:Name="cbbx_arquivos"
+                                          Width="210"
+                                          Margin="-50,0,0,0"
+                                          PlaceholderText="Selecione o Arquivo"
+                                          SelectionChanged="cbbx_arquivos_SelectionChanged">
+                                </ComboBox>
+
+                            </StackPanel>
+                        </Expander.Content>
+                    </Expander>
+                </NavigationViewItem>
+                
+                <NavigationViewItemSeparator/>
+
+                <!-- Banco de dados -->
+                <NavigationViewItem x:Name="nav_item_banco" 
+                                    ToolTipService.ToolTip="Banco de Dados"
+                                    Tag="Banco">
+
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEBC3;" />
+                    </NavigationViewItem.Icon>
+                    
+                    <Expander x:Name="Banco"
+                              ExpandDirection="Up"
+                              Width="320"
+                              Margin="0,0,-31,0"
+                              HorizontalAlignment="Stretch">
+                        <!-- Cabeçalho do Expander -->
+                        <Expander.Header>
+                            <TextBlock x:Name="txb_banco" Text="Banco"/>
+                        </Expander.Header>
+
+                        <!-- Conteúdo do Expander -->
+                        <Expander.Content>
+                            <StackPanel>
+                                <!-- Primeiro ComboBox -->                                
+                                <ComboBox x:Name="cbx_bancos"
+                                          SelectionChanged="cbx_bancos_SelectionChanged"
+                                          Width="250"
+                                          Margin="-50,0,0,0"
+                                          PlaceholderText="Selecione um Banco">
+                                    <!-- Opções do ComboBox -->
+                                    <ComboBoxItem Content="A Definir" />
+                                    <ComboBoxItem Content="SQL Server" />
+                                    <ComboBoxItem Content="Oracle" />
+                                </ComboBox>
+
+                                <!-- Segundo ComboBox -->
+                                <ComboBox x:Name="cbx_equipamentos"
+                                          SelectionChanged="cbx_equipamentos_SelectionChanged"
+                                          Width="250"
+                                          HorizontalAlignment="Center"
+                                          Margin="-50,10,0,0"
+                                          PlaceholderText="Selecione um equipamento">
+                                </ComboBox>
+                            </StackPanel>
+                        </Expander.Content>
+                    </Expander>
+                </NavigationViewItem>
+
+                
+
+
+                <!-- Configuração -->
+                <NavigationViewItem x:Name="nav_item_configuracao" 
+                                    Content="Configuração do Sistema"
+                                    Icon="Setting"
+                                    ToolTipService.ToolTip="Configurações do PLC"
+                                    Tag="ConfiguracaoSistema">
+                    <NavigationViewItem.MenuItems>
+
+                        <!-- Dados da Estação -->
+                        <NavigationViewItem Content="Dados da Estação"
+                                            ToolTipService.ToolTip="Dados da estação"
+                                            Tag="DadosEstacao">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE8A1;" FontFamily="Segoe MDL2 Assets"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+
+                        <!-- Faixas -->
+                        <NavigationViewItem Content="Faixas"
+                                            ToolTipService.ToolTip="Faixas da rodovia"
+                                            Tag="Faixas">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE707;" FontFamily="Segoe MDL2 Assets"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+
+                        <!-- Laços -->
+                        <NavigationViewItem x:Name="nav_item_lacos"
+                                            Visibility="Visible"
+                                            Content="Laços"
+                                            ToolTipService.ToolTip="Laços"
+                                            Tag="Lacos">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE8B1;" FontFamily="Segoe MDL2 Assets"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <!-- Classe -->
+                        <NavigationViewItem Content="Classe"
+                                            ToolTipService.ToolTip="Classes de Comprimento"
+                                            Tag="Classe">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE9D5;" FontFamily="Segoe MDL2 Assets"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                <!-- Filtro -->
+                        <NavigationViewItem Content="Filtro"
+                                                    Icon="Filter"
+                                                    ToolTipService.ToolTip="Filtros"
+                                                    Tag="Filtros"/>
+                        
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+
+                <!-- Monitoramento -->
+                <NavigationViewItem x:Name="nav_item_monitoramento"
+                                    Visibility="Visible"
+                                    Content="Monitoramento"
+                                    Icon="SlideShow"
+                                    ToolTipService.ToolTip="Monitoramento"
+                                    Tag="Monitoramento">
+                    <NavigationViewItem.MenuItems>
+                        <!-- Alarmes -->
+                        <NavigationViewItem x:Name="nav_item_alarmes"
+                                            Content="Alarmes"
+                                            ToolTipService.ToolTip="Alarmes"
+                                            Tag="Alarmes">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE789;" FontFamily="Segoe MDL2 Assets"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <!-- Aferição -->
+                        <NavigationViewItem x:Name="nav_item_afericao"
+                                            Content="Aferição"
+                                            ToolTipService.ToolTip="Faixas"
+                                            Tag="Afericao">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE9F9;" FontFamily="Segoe MDL2 Assets"/>
+                            </NavigationViewItem.Icon>
+                            
+                            <NavigationViewItem.MenuItems>
+
+                                <NavigationViewItem Content="Veículo"
+                                                ToolTipService.ToolTip="Veículos na pista"
+                                                Tag="Veiculo">
+                                    <NavigationViewItem.Icon>
+                                        <FontIcon Glyph="&#xF163;" FontFamily="Segoe MDL2 Assets"/>
+                                    </NavigationViewItem.Icon>
+                                </NavigationViewItem>
+
+                                <NavigationViewItem Content="Contagem"
+                                                    ToolTipService.ToolTip="Detector 2"
+                                                    Tag="Contagem">
+                                    <NavigationViewItem.Icon>
+                                        <FontIcon Glyph="&#xE14C;" FontFamily="Segoe MDL2 Assets"/>
+                                    </NavigationViewItem.Icon>
+                                </NavigationViewItem>
+
+                            </NavigationViewItem.MenuItems>
+                        </NavigationViewItem>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+
+            <!-- Footer -->
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem x:Name="nav_item_pararPLC"                                    
+                                    Visibility="Visible"
+                                    Tapped="FooterItem_Tapped"
+                                    Tag="btn_pararPLC"
+                                    ToolTipService.ToolTip="Parar PLC">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE71A;" FontFamily="Segoe MDL2 Assets"/>
+                    </NavigationViewItem.Icon>
+                    
+                    <Button x:Name="btn_pararPLC" Visibility="Visible" Click="btn_pararPLC_Click" Content="Stop PLC" Width="130" HorizontalAlignment="Right"/>
+                </NavigationViewItem>
+
+
+                <NavigationViewItem x:Name="nav_item_FTP"
+                    Visibility="Visible"
+                    Tapped="FooterItem_Tapped"
+                    Tag="btn_FTP"
+                    ToolTipService.ToolTip="FTP">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE896;" FontFamily="Segoe MDL2 Assets"/>
+                    </NavigationViewItem.Icon>
+
+                    <!-- Botão de Download -->
+                    <Button x:Name="btn_FTP"
+                            Click="btn_FTP_Click"
+                            Content="Download SD"
+                            Width="130"
+                            HorizontalAlignment="Right"/>
+                </NavigationViewItem>
+
+
+                <NavigationViewItemSeparator/>  
+                
+                <NavigationViewItem x:Name="nav_item_lerPLC"
+                                    Visibility="Visible"
+                                    Tapped="FooterItem_Tapped"
+                                    Tag="btn_lerPLC"
+                                    ToolTipService.ToolTip="Enviar data atual"                               
+                                    Icon="Calendar">
+                    <Button x:Name="btn_enviarData" Click="BtnDataAtual_Click" Content="Enviar data atual" Width="130" HorizontalAlignment="Right"/>
+                </NavigationViewItem>
+                <NavigationViewItem x:Name="nav_item_resetMDV8"
+                                    Visibility="Visible"
+                                    Tapped="FooterItem_Tapped"
+                                    Tag="btn_resetMDV8"
+                                    ToolTipService.ToolTip="Reset MDV8"                             
+                                    Icon="Refresh">
+                    <Button x:Name="btn_resetar" Click="btn_resetar_Click" Content="Reset MDV8" Width="130" HorizontalAlignment="Right"/>
+                </NavigationViewItem>
+                <NavigationViewItem x:Name="nav_item_lerConfigPLC"
+                                    Visibility="Visible"
+                                    Tapped="FooterItem_Tapped"
+                                    Tag="btn_lerConfigPLC"
+                                    ToolTipService.ToolTip="Ler configuração do PLC"                               
+                                    Icon="Remote">
+                    <Button x:Name="btn_lerConfig" Click="btn_lerConfig_Click" Content="Ler config PLC" Width="130" HorizontalAlignment="Right"/>
+                </NavigationViewItem>
+                <NavigationViewItem x:Name="nav_item_enviarPLC"
+                                    Visibility="Visible"
+                                    Tapped="FooterItem_Tapped"
+                                    Tag="btn_enviarPLC"
+                                    ToolTipService.ToolTip="Enviar configuração do PLC"                               
+                                    Icon="Send">
+                    <Button x:Name="btnEnviar" Content="Enviar config PLC" Click="btnEnviar_Click" Width="130" HorizontalAlignment="Right"/>
+                </NavigationViewItem>
+            </NavigationView.FooterMenuItems>
+
+            <Frame x:Name="mainFrame">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition/>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+        </NavigationView>
+    </Grid>
+</Window>

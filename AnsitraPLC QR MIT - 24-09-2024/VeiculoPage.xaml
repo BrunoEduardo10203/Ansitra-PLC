@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    
+    x:Class="AnsitraPLC_QR_MIT.VeiculoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AnsitraPLC_QR_MIT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    NavigationCacheMode="Enabled"    
+    Background="#324848">
+
+    <Page.Resources>
+        <local:BooleanToGridLengthConverter x:Key="BoolToGridLengthConverter"/>
+    </Page.Resources>
+
+
+    <Grid>
+        <TextBlock Text="Veículos" FontSize="28" FontWeight="SemiBold" Margin="100,20,0,0"/>
+        
+        <Grid>
+            <Button x:Name="btn_gravar"  Style="{StaticResource AccentButtonStyle}" Content="Iniciar Gravação" Click="btn_gravar_Click" HorizontalAlignment="Right" Width="180" VerticalAlignment="Top" Margin="0,65,220,0"/>
+            <Button x:Name="btn_iniciar" Style="{StaticResource AccentButtonStyle}" Content="Iniciar" Click="btn_iniciar_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,65,110,0"/>
+            <Button x:Name="btn_fechar" Style="{StaticResource AccentButtonStyle}" Content="Fechar" Click="btn_fechar_Click" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,65,110,0"/>
+            <Button x:Name="btn_limpar" Style="{StaticResource AccentButtonStyle}" Content="Limpar" Click="btn_limpar_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,65,30,0"/>
+        </Grid>
+
+
+        <Grid Margin="20,100,20,20" CornerRadius="12" BorderBrush="Gray" BorderThickness="1">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <ListView ItemsSource="{Binding Produtos}">
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
+                            <Grid x:Name="container_colunas" Grid.Row="0" BorderBrush="Gray" BorderThickness="3" Padding="20,10,0,10" >
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=numeroCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='50'}"/>
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=dataCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='50'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=horaCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='50'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=faixaCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='60'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=velocCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='95'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=compriCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='90'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=ccCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='50'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=ocupCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='70'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=gapMtCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='80'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=gapSegCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='80'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=headwayCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=interCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='120'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=ocupacaoCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='130'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=acionamCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='105'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=qtdEixoCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='80'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=grpEixoCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='80'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=classDNITCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo01Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo02Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo03Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo04Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo05Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo06Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo07Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo08Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo09Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo10Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoTotalCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='90'}" />
+
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" x:Name="coluna1" Text="Nº" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Data" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="2" Text="Hora" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="3" Text="Faixa" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="4" Text="Veloc.Km/h" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="5" Text="Compr.mts" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="6" Text="CC" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="7" Text="Ocup.ms" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="8" Text="Gap(m)" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="9" Text="Gap(s)" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="10" Text="Headway(s)" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="11" Text="Inter.L1-L2 ms" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="12" Text="Ocupação L1 ms" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="13" Text="Acionam.L1" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="14" Text="Qtd Eixos" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="15" Text="Grp Eixos" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="16" Text="Classe DNIT" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="17" Text="Peso Eixo 01" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="18" Text="Peso Eixo 02" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="19" Text="Peso Eixo 03" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="20" Text="Peso Eixo 04" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="21" Text="Peso Eixo 05" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="22" Text="Peso Eixo 06" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="23" Text="Peso Eixo 07" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="24" Text="Peso Eixo 08" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="25" Text="Peso Eixo 09" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="26" Text="Peso Eixo 10" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="27" Text="Peso Total Kg" FontWeight="Bold"/>
+                            </Grid>
+                            
+
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
+
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=numeroCbx, Converter={StaticResource BoolToGridLengthConverter},ConverterParameter='54'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=dataCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='53'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=horaCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='53'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=faixaCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='56'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=velocCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='95'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=compriCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='95'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=ccCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='47'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=ocupCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='75'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=gapMtCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='75'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=gapSegCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='75'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=headwayCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='105'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=interCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='120'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=ocupacaoCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='130'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=acionamCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=qtdEixoCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='75'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=grpEixoCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='80'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=classDNITCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo01Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='103'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo02Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo03Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo04Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo05Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo06Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo07Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo08Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo09Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesoEixo10Cbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                    <ColumnDefinition Width="{Binding IsChecked, ElementName=pesototalCbx, Converter={StaticResource BoolToGridLengthConverter}, ConverterParameter='100'}" />
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="3,0,3,0"/>
+                                <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="2" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="3" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="4" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="5" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="6" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="7" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="8" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="9" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="10" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="11" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="12" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="13" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="14" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="15" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="16" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="17" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="18" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="19" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="20" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="21" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="22" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="23" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="24" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="25" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="26" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+                                <Border Grid.Column="27" BorderBrush="Gray" BorderThickness="0,0,3,0"/>
+
+                                <TextBlock Grid.Column="0" Text="{Binding Numero}" HorizontalAlignment="Center" Visibility="Visible"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Data}" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Column="2" Text="{Binding Hora}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="3" Text="{Binding Faixa}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="4" Text="{Binding Velocidade}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="5" Text="{Binding Comprimento}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="6" Text="{Binding CC}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="7" Text="{Binding OcupacaoM}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="8" Text="{Binding GapM}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="9" Text="{Binding GapS}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="10" Text="{Binding Headway}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="11" Text="{Binding Inter}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="12" Text="{Binding OcupacaoL}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="13" Text="{Binding Acionamento}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="14" Text="{Binding QtdEixo}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="15" Text="{Binding GrpEixo}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="16" Text="{Binding ClassDNIT}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="17" Text="{Binding PesoEx1}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="18" Text="{Binding PesoEx2}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="19" Text="{Binding PesoEx3}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="20" Text="{Binding PesoEx4}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="21" Text="{Binding PesoEx5}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="22" Text="{Binding PesoEx6}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="23" Text="{Binding PesoEx7}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="24" Text="{Binding PesoEx8}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="25" Text="{Binding PesoEx9}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="26" Text="{Binding PesoEx10}" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="27" Text="{Binding PesoTotal}" HorizontalAlignment="Center" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
+        </Grid>
+
+        <StackPanel>
+            <Button x:Name="btn_pistas"
+                    Click="btn_pistas_Click"
+                    Content="Pistas"
+                    Margin="30,65,0,0">
+                <Button.Flyout >
+                    <Flyout Placement="RightEdgeAlignedBottom">
+                        <StackPanel Orientation="Vertical">
+
+                            <CheckBox x:Name="selectAllPistas"
+                                      IsChecked="False"
+                                      IsThreeState="False"
+                                      Content="Todas Pistas"
+                                      Checked="SelectAllPistas_Checked" 
+                                      Unchecked="SelectAllPistas_Unchecked"/>
+
+                            <CheckBox x:Name="pista1" Content="{Binding NomeFaixa1, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista2" Content="{Binding NomeFaixa2, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista3" Content="{Binding NomeFaixa3, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista4" Content="{Binding NomeFaixa4, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista5" Content="{Binding NomeFaixa5, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista6" Content="{Binding NomeFaixa6, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista7" Content="{Binding NomeFaixa7, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista8" Content="{Binding NomeFaixa8, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista9" Content="{Binding NomeFaixa9, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista10" Content="{Binding NomeFaixa10, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista11" Content="{Binding NomeFaixa11, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista12" Content="{Binding NomeFaixa12, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista13" Content="{Binding NomeFaixa13, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista14" Content="{Binding NomeFaixa14, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista15" Content="{Binding NomeFaixa15, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pista16" Content="{Binding NomeFaixa16, Mode=TwoWay}" Visibility="Visible" Margin="20,0,0,0" IsThreeState="False"/>
+
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+        </StackPanel>
+
+        <StackPanel>
+            <Button Content="Colunas"
+                    Margin="100,65,0,0">
+                <Button.Flyout>
+                    <Flyout Placement="RightEdgeAlignedBottom">
+                        <StackPanel Orientation="Vertical">
+
+                            <CheckBox x:Name="SelectAllColunas"
+                                      Content="Todas as Colunas"
+                                      Checked="SelectAllColunas_Checked" 
+                                      Unchecked="SelectAllColunas_Unchecked"/>
+
+                            <CheckBox x:Name="numeroCbx" IsChecked="True" Content="Nº" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="dataCbx" IsChecked="True" Content="Data"  Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="horaCbx" IsChecked="True" Content="Hora" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="faixaCbx" IsChecked="True" Content="Faixa" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="velocCbx" IsChecked="True" Content="Veloc.Km/h" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="compriCbx" IsChecked="True" Content="Compr.mts" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="ccCbx" IsChecked="True" Content="CC" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="ocupCbx" IsChecked="True" Content="Ocup.ms" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="gapMtCbx" IsChecked="True" Content="Gap(m)" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="gapSegCbx" IsChecked="True" Content="Gap (s)" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="headwayCbx" IsChecked="True" Content="Headway(s)" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="interCbx" IsChecked="True" Content="Inter.L1-L2 ms" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="ocupacaoCbx" IsChecked="True" Content="Ocupacao L1 ms" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="acionamCbx" IsChecked="True" Content="Acionam.L1" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="qtdEixoCbx" IsChecked="True" Content="Qtd Eixos" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="grpEixoCbx" IsChecked="True" Content="Grp Eixos" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="classDNITCbx" IsChecked="True" Content="Classe DNIT" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pesoEixo01Cbx" IsChecked="True" Content="Peso Eixo 01" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pesoEixo02Cbx" IsChecked="True" Content="Peso Eixo 02" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pesoEixo03Cbx" IsChecked="True" Content="Peso Eixo 03" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pesoEixo04Cbx" IsChecked="True" Content="Peso Eixo 04" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pesoEixo05Cbx" IsChecked="True" Content="Peso Eixo 05" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pesoEixo06Cbx" IsChecked="True" Content="Peso Eixo 06" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pesoEixo07Cbx" IsChecked="True" Content="Peso Eixo 07" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pesoEixo08Cbx" IsChecked="True" Content="Peso Eixo 08" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pesoEixo09Cbx" IsChecked="True" Content="Peso Eixo 09" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pesoEixo10Cbx" IsChecked="True" Content="Peso Eixo 10" Margin="20,0,0,0" IsThreeState="False"/>
+                            <CheckBox x:Name="pesototalCbx" IsChecked="True" Content="Peso Total Kg" Margin="20,0,0,0" IsThreeState="False"/>
+
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

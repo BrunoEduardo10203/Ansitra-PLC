@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AnsitraPLC QR MIT - 24-09-2024 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "AnsitraPLC QR MIT - 24-09-2024 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

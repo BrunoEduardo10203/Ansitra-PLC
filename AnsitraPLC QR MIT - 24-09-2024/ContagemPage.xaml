@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AnsitraPLC_QR_MIT.ContagemPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AnsitraPLC_QR_MIT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"    
+    NavigationCacheMode="Enabled"
+    Background="#324848">
+
+    <Grid>
+        
+        
+        <TextBlock Text="Contagem de veículos." FontSize="28" FontWeight="SemiBold" Margin="100,20,0,0"/>
+        <Grid Background="#2F4F4F"
+              Margin="0,50,0,0"
+              Width="750"
+              Height="520"
+              CornerRadius="12"
+              BorderBrush="Gray"
+              BorderThickness="1">
+         <Button Margin="0,16,25,0" Content="Limpar Campos" Click="Button_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource AccentButtonStyle}"></Button>
+
+            <StackPanel>
+
+                
+                <Button x:Name="btn_selecPistas"                        
+                        Content="Selecione as Pistas"
+                        Click="btn_selecPistas_Click"
+                        Style="{StaticResource AccentButtonStyle}"
+                        Margin="0,16,0,0"
+                        HorizontalAlignment="Center">
+                    <Button.Flyout>
+                        <Flyout Placement="RightEdgeAlignedBottom">
+                            <StackPanel Orientation="Vertical">
+
+                                <CheckBox x:Name="selectAllPistas"
+                                          IsChecked="False"
+                                          Content="Todas Pistas"
+                                          Checked="SelectAllPistas_Checked" 
+                                          Unchecked="SelectAllPistas_Unchecked"/>
+
+                                <CheckBox x:Name="nome_pista1" Content="{Binding NomeFaixa1, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista2" Content="{Binding NomeFaixa2, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista3" Content="{Binding NomeFaixa3, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista4" Content="{Binding NomeFaixa4, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista5" Content="{Binding NomeFaixa5, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista6" Content="{Binding NomeFaixa6, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista7" Content="{Binding NomeFaixa7, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista8" Content="{Binding NomeFaixa8, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista9" Content="{Binding NomeFaixa9, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista10" Content="{Binding NomeFaixa10, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista11" Content="{Binding NomeFaixa11, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista12" Content="{Binding NomeFaixa12, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista13" Content="{Binding NomeFaixa13, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista14" Content="{Binding NomeFaixa14, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista15" Content="{Binding NomeFaixa15, Mode=TwoWay}" Margin="20,0,0,0"/>
+                                <CheckBox x:Name="nome_pista16" Content="{Binding NomeFaixa16, Mode=TwoWay}" Margin="20,0,0,0"/>
+
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+            </StackPanel>
+
+            <Grid Background="#2F4F4F"
+              Margin="0,60,0,0"
+              Width="700"
+              Height="500"
+              CornerRadius="4"
+              BorderBrush="Gray"
+              BorderThickness="1">
+
+                <TextBlock Text="Classe comprimento" FontSize="22" Margin="10,10,0,0"/>
+
+                <TextBlock x:Name="txtbx_NomePista1" Text="{Binding NomeFaixa1, Mode=TwoWay}" Margin="110,50,0,0"/>
+                <TextBox x:Name="txtbx_pista1"
+                         Text="{Binding QuantidadeClass1, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center"
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="100,70,0,0"/>
+
+                <TextBlock x:Name="txtbx_NomePista2" Text="{Binding NomeFaixa2, Mode=TwoWay}" Margin="250,50,0,0"/>
+                <TextBox x:Name="txtbx_pista2"
+                         Text="{Binding QuantidadeClass2, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center" 
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Center"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="0,70,140,0"/>
+
+                <TextBlock x:Name="txtbx_NomePista3" Text="{Binding NomeFaixa3, Mode=TwoWay}" Margin="396,50,0,0"/>
+                <TextBox x:Name="txtbx_pista3"
+                         Text="{Binding QuantidadeClass3, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center"
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Center"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="150,70,0,0"/>
+
+                <TextBlock x:Name="txtbx_NomePista4" Text="{Binding NomeFaixa4, Mode=TwoWay}" Margin="530,50,0,0"/>
+                <TextBox x:Name="txtbx_pista4"
+                         Text="{Binding QuantidadeClass4, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center"
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Center"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="420,70,0,0"/>
+
+                <TextBlock x:Name="txtbx_NomePista5" Text="{Binding NomeFaixa5, Mode=TwoWay}" Margin="110,130,0,0"/>
+                <TextBox x:Name="txtbx_pista5"
+                         Text="{Binding QuantidadeClass5, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center"
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="100,150,0,0"/>
+
+                <TextBlock x:Name="txtbx_NomePista6" Text="{Binding NomeFaixa6, Mode=TwoWay}" Margin="250,130,0,0"/>
+                <TextBox x:Name="txtbx_pista6"
+                         Text="{Binding QuantidadeClass6, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center"
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Center"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="0,150,140,0"/>
+
+                <TextBlock x:Name="txtbx_NomePista7" Text="{Binding NomeFaixa7, Mode=TwoWay}" Margin="396,130,0,0"/>
+                <TextBox x:Name="txtbx_pista7"
+                         Text="{Binding QuantidadeClass7, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center"
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Center"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="150,150,0,0"/>
+
+                <TextBlock x:Name="txtbx_NomePista8" Text="{Binding NomeFaixa8, Mode=TwoWay}" Margin="530,130,0,0"/>
+                <TextBox x:Name="txtbx_pista8"
+                         Text="{Binding QuantidadeClass8, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center"
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Center"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="420,150,0,0"/>
+
+                <TextBlock x:Name="txtbx_NomePista9" Text="{Binding NomeFaixa9, Mode=TwoWay}" Margin="110,210,0,0"/>
+                <TextBox x:Name="txtbx_pista9"
+                         Text="{Binding QuantidadeClass9, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center"
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="100,230,0,0"/>
+
+                <TextBlock x:Name="txtbx_Nomepista10" Text="{Binding NomeFaixa10, Mode=TwoWay}" Margin="250,210,0,0"/>
+                <TextBox x:Name="txtbx_pista10"
+                         Text="{Binding QuantidadeClass10, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center"
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Center"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="0,230,140,0"/>
+
+                <TextBlock x:Name="txtbx_Nomepista11" Text="{Binding NomeFaixa11, Mode=TwoWay}" Margin="396,210,0,0"/>
+                <TextBox x:Name="txtbx_pista11"
+                         Text="{Binding QuantidadeClass11, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center"
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Center"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="150,230,0,0"/>
+
+                <TextBlock x:Name="txtbx_NomePista12" Text="{Binding NomeFaixa12, Mode=TwoWay}" Margin="530,210,0,0"/>
+                <TextBox x:Name="txtbx_pista12"
+                         Text="{Binding QuantidadeClass12, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center"
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Center"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="420,230,0,0"/>
+
+                <TextBlock x:Name="txtbx_NomePista13" Text="{Binding NomeFaixa13, Mode=TwoWay}" Margin="110,290,0,0"/>
+                <TextBox x:Name="txtbx_pista13"
+                         Text="{Binding QuantidadeClass13, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center"
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="100,310,0,0"/>
+
+                <TextBlock x:Name="txtbx_NomePista14" Text="{Binding NomeFaixa14, Mode=TwoWay}" Margin="250,290,0,0"/>
+                <TextBox x:Name="txtbx_pista14"
+                         Text="{Binding QuantidadeClass14, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center"
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Center"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="0,310,140,0"/>
+
+                <TextBlock x:Name="txtbx_NomePista15" Text="{Binding NomeFaixa15, Mode=TwoWay}" Margin="396,290,0,0"/>
+                <TextBox x:Name="txtbx_pista15"
+                         Text="{Binding QuantidadeClass15, Mode=TwoWay}"
+                         Width="80"
+                         TextAlignment="Center"
+                         IsReadOnly="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Center"
+                         MaxLength="4"
+                         PlaceholderText="0"
+                         Margin="150,310,0,0"/>
+
+                <NavigationViewItemSeparator Margin="0,230,0,0"/>
+            </Grid>
+            
+            <Image Source="Assets/truck.png" Width="70" Margin="0,415,540,0"/>
+            <TextBox x:Name="txtbl_caminhao"
+                     Text="{Binding QuantidadeComercial, Mode=TwoWay}"
+                     TextAlignment="Center"
+                     IsReadOnly="True"
+                     VerticalAlignment="Bottom"
+                     HorizontalAlignment="Left"
+                     MaxLength="4"
+                     PlaceholderText="0"
+                     Margin="70,0,0,2"/>
+            
+            <Image Source="Assets/sedan.png" Width="60" Margin="0,425,300,0"/>
+            <TextBox x:Name="txtbl_carros"
+                     TextAlignment="Center"
+                     IsReadOnly="True"
+                     VerticalAlignment="Bottom"
+                     HorizontalAlignment="Left"
+                     MaxLength="4"
+                     PlaceholderText="0"
+                     Margin="195,0,0,2"/>
+            
+            <Image Source="Assets/motorcycle.png" Width="40" Margin="0,426,90,0"/>
+            <TextBox x:Name="txtbl_motos"
+                     TextAlignment="Center"
+                     IsReadOnly="True"
+                     VerticalAlignment="Bottom"
+                     HorizontalAlignment="Left"
+                     MaxLength="4"
+                     PlaceholderText="0"
+                     Margin="300,0,0,2"/>
+
+            <Border Width="2" Height="80" Background="Gray" Margin="50,0,0,5" VerticalAlignment="Bottom"/>
+
+            <TextBlock Text="Total:" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="300,0,0,35"/>
+            <TextBox x:Name="txtbl_total"
+                     Text="{Binding QuantidadeTotal, Mode=TwoWay}"
+                     TextAlignment="Center"
+                     IsReadOnly="True"
+                     VerticalAlignment="Bottom"
+                     HorizontalAlignment="Right"
+                     MaxLength="4"
+                     PlaceholderText="0"
+                     Margin="0,0,140,30"/>
+        </Grid>
+    </Grid>
+</Page>

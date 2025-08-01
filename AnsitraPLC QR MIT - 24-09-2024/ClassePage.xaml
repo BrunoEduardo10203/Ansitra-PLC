@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AnsitraPLC_QR_MIT.ClassePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AnsitraPLC_QR_MIT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    NavigationCacheMode="Enabled"    
+    Background="#324848">
+
+
+    <Grid>
+
+        <!--Titulo-->
+        <TextBlock Text="Classes de comprimento e eixos." FontSize="28" FontWeight="SemiBold" Margin="100,20,0,0"/>
+
+        <Grid Width="750"
+              Height="500"
+              Margin="0,80,0,0"
+              CornerRadius="12"
+              BorderBrush="Gray"
+             BorderThickness="1">
+            
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid Margin="20" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <!-- 16 linhas-->
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="140"/>
+                        <!-- Tipo -->
+                        <ColumnDefinition Width="200"/>
+                        <!-- Nome da Classe -->
+                        <ColumnDefinition Width="100"/>
+                        <!-- Início -->
+                        <ColumnDefinition Width="100"/>
+                        <!-- Fim -->
+                        <ColumnDefinition Width="100"/>
+                        <!-- Qtd de Eixos -->
+                    </Grid.ColumnDefinitions>
+                    
+                    <!-- Cabeçalhos -->
+                    <Button x:Name="btn_tipo" Click="btn_tipo_Click" Grid.Row="0" Grid.Column="0" Content="Tipo" FontWeight="Bold" Margin="33,0,0,0"/>
+
+                    <Button Style="{StaticResource AccentButtonStyle}" Content="Nome das classes" Grid.Row="0" Grid.Column="1" Margin="38,0,0,0">
+                        <Button.Flyout>
+                            <Flyout Placement="RightEdgeAlignedBottom">
+                                <StackPanel>
+                                    <TextBox x:Name="txtbx_nomeClasses"  Margin="2" PlaceholderText="Nome escolhido" CharacterCasing="Upper"></TextBox>
+                                    <TextBox x:Name="txtbx_quantidade" Margin="2" PlaceholderText="Quantidade" MaxLength="2"></TextBox>
+                                    <Button x:Name="btn_setarNomes" Click="btn_setarNomes_Click" Style="{StaticResource AccentButtonStyle}" Content="Setar nomes" Margin="2" HorizontalAlignment="Center" Width="100"/>
+                                    <Button x:Name="btn_limparCampos" Click="btn_limparCampos_Click" Style="{StaticResource AccentButtonStyle}" Content="Limpar Class" Margin="2" HorizontalAlignment="Center" Width="100"/>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                    
+                    <Button x:Name="btn_inicio" Click="btn_inicio_Click" Grid.Row="0" Grid.Column="2" Content="Início" FontWeight="Bold" Margin="21,0,0,0"/>
+                    <Button x:Name="btn_fim" Click="btn_fim_Click" Grid.Row="0" Grid.Column="3" Content="Fim" FontWeight="Bold" Margin="26,0,0,0"/>
+                    <Button x:Name="btn_qtdEixos" Click="btn_qtdEixos_Click" Grid.Row="0" Grid.Column="4" Content="Qtd de Eixos" FontWeight="Bold" Margin="0"/>
+                    <!-- FIM Cabeçalhos -->
+                    
+
+
+                    <!-- Linhas de ComboBox e TextBox -->
+
+                    <!-- 16 TextBox abaixo de 'Tipo' -->
+                    <ComboBox x:Name="tipo1" Grid.Row="1" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+                    <ComboBox x:Name="tipo2" Grid.Row="2" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+                    <ComboBox x:Name="tipo3" Grid.Row="3" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+                    <ComboBox x:Name="tipo4" Grid.Row="4" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+                    <ComboBox x:Name="tipo5" Grid.Row="5" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+                    <ComboBox x:Name="tipo6" Grid.Row="6" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo6, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+                    <ComboBox x:Name="tipo7" Grid.Row="7" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo7, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+                    <ComboBox x:Name="tipo8" Grid.Row="8" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo8, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+                    <ComboBox x:Name="tipo9" Grid.Row="9" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo9, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+                    <ComboBox x:Name="tipo10" Grid.Row="10" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo10, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+                    <ComboBox x:Name="tipo11" Grid.Row="11" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo11, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+                    <ComboBox x:Name="tipo12" Grid.Row="12" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo12, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+                    <ComboBox x:Name="tipo13" Grid.Row="13" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo13, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+                    <ComboBox x:Name="tipo14" Grid.Row="14" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo14, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+                    <ComboBox x:Name="tipo15" Grid.Row="15" Grid.Column="0" Margin="5" Width="110" ItemsSource="{Binding ListaTipos}" SelectedItem="{Binding ClassTipo15, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Moto"/>
+                        <ComboBoxItem Content="Auto"/>
+                        <ComboBoxItem Content="Comercial"/>
+                    </ComboBox>
+
+                    <!-- 15 TextBox abaixo de 'Nome da Classe' -->
+                    <TextBox x:Name="txtbx_classe1" Text="{Binding ClassNome1, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="5"/>
+                    <TextBox x:Name="txtbx_classe2" Text="{Binding ClassNome2, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" Margin="5"/>
+                    <TextBox x:Name="txtbx_classe3" Text="{Binding ClassNome3, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" Margin="5"/>
+                    <TextBox x:Name="txtbx_classe4" Text="{Binding ClassNome4, Mode=TwoWay}" Grid.Row="4" Grid.Column="1" Margin="5"/>
+                    <TextBox x:Name="txtbx_classe5" Text="{Binding ClassNome5, Mode=TwoWay}" Grid.Row="5" Grid.Column="1" Margin="5"/>
+                    <TextBox x:Name="txtbx_classe6" Text="{Binding ClassNome6, Mode=TwoWay}" Grid.Row="6" Grid.Column="1" Margin="5"/>
+                    <TextBox x:Name="txtbx_classe7" Text="{Binding ClassNome7, Mode=TwoWay}" Grid.Row="7" Grid.Column="1" Margin="5"/>
+                    <TextBox x:Name="txtbx_classe8" Text="{Binding ClassNome8, Mode=TwoWay}" Grid.Row="8" Grid.Column="1" Margin="5"/>
+                    <TextBox x:Name="txtbx_classe9" Text="{Binding ClassNome9, Mode=TwoWay}" Grid.Row="9" Grid.Column="1" Margin="5"/>
+                    <TextBox x:Name="txtbx_classe10" Text="{Binding ClassNome10, Mode=TwoWay}" Grid.Row="10" Grid.Column="1" Margin="5"/>
+                    <TextBox x:Name="txtbx_classe11" Text="{Binding ClassNome11, Mode=TwoWay}" Grid.Row="11" Grid.Column="1" Margin="5"/>
+                    <TextBox x:Name="txtbx_classe12" Text="{Binding ClassNome12, Mode=TwoWay}" Grid.Row="12" Grid.Column="1" Margin="5"/>
+                    <TextBox x:Name="txtbx_classe13" Text="{Binding ClassNome13, Mode=TwoWay}" Grid.Row="13" Grid.Column="1" Margin="5"/>
+                    <TextBox x:Name="txtbx_classe14" Text="{Binding ClassNome14, Mode=TwoWay}" Grid.Row="14" Grid.Column="1" Margin="5"/>
+                    <TextBox x:Name="txtbx_classe15" Text="{Binding ClassNome15, Mode=TwoWay}" Grid.Row="15" Grid.Column="1" Margin="5"/>
+
+                    <!-- 15 TextBox abaixo de 'Início' -->
+                    <TextBox x:Name="txtbx_inicio1" Text="{Binding ClassInicio1, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" Margin="5"/>
+                    <TextBox x:Name="txtbx_inicio2" Text="{Binding ClassInicio2, Mode=TwoWay}" Grid.Row="2" Grid.Column="2" Margin="5"/>
+                    <TextBox x:Name="txtbx_inicio3" Text="{Binding ClassInicio3, Mode=TwoWay}" Grid.Row="3" Grid.Column="2" Margin="5"/>
+                    <TextBox x:Name="txtbx_inicio4" Text="{Binding ClassInicio4, Mode=TwoWay}" Grid.Row="4" Grid.Column="2" Margin="5"/>
+                    <TextBox x:Name="txtbx_inicio5" Text="{Binding ClassInicio5, Mode=TwoWay}" Grid.Row="5" Grid.Column="2" Margin="5"/>
+                    <TextBox x:Name="txtbx_inicio6" Text="{Binding ClassInicio6, Mode=TwoWay}" Grid.Row="6" Grid.Column="2" Margin="5"/>
+                    <TextBox x:Name="txtbx_inicio7" Text="{Binding ClassInicio7, Mode=TwoWay}" Grid.Row="7" Grid.Column="2" Margin="5"/>
+                    <TextBox x:Name="txtbx_inicio8" Text="{Binding ClassInicio8, Mode=TwoWay}" Grid.Row="8" Grid.Column="2" Margin="5"/>
+                    <TextBox x:Name="txtbx_inicio9" Text="{Binding ClassInicio9, Mode=TwoWay}" Grid.Row="9" Grid.Column="2" Margin="5"/>
+                    <TextBox x:Name="txtbx_inicio10" Text="{Binding ClassInicio10, Mode=TwoWay}" Grid.Row="10" Grid.Column="2" Margin="5"/>
+                    <TextBox x:Name="txtbx_inicio11" Text="{Binding ClassInicio11, Mode=TwoWay}" Grid.Row="11" Grid.Column="2" Margin="5"/>
+                    <TextBox x:Name="txtbx_inicio12" Text="{Binding ClassInicio12, Mode=TwoWay}" Grid.Row="12" Grid.Column="2" Margin="5"/>
+                    <TextBox x:Name="txtbx_inicio13" Text="{Binding ClassInicio13, Mode=TwoWay}" Grid.Row="13" Grid.Column="2" Margin="5"/>
+                    <TextBox x:Name="txtbx_inicio14" Text="{Binding ClassInicio14, Mode=TwoWay}" Grid.Row="14" Grid.Column="2" Margin="5"/>
+                    <TextBox x:Name="txtbx_inicio15" Text="{Binding ClassInicio15, Mode=TwoWay}" Grid.Row="15" Grid.Column="2" Margin="5"/>
+
+                    <!-- 15 TextBox abaixo de 'Fim' -->
+                    <TextBox x:Name="txtbx_fim1" Text="{Binding ClassFim1, Mode=TwoWay}" Grid.Row="1" Grid.Column="3" Margin="5"/>
+                    <TextBox x:Name="txtbx_fim2" Text="{Binding ClassFim2, Mode=TwoWay}" Grid.Row="2" Grid.Column="3" Margin="5"/>
+                    <TextBox x:Name="txtbx_fim3" Text="{Binding ClassFim3, Mode=TwoWay}" Grid.Row="3" Grid.Column="3" Margin="5"/>
+                    <TextBox x:Name="txtbx_fim4" Text="{Binding ClassFim4, Mode=TwoWay}" Grid.Row="4" Grid.Column="3" Margin="5"/>
+                    <TextBox x:Name="txtbx_fim5" Text="{Binding ClassFim5, Mode=TwoWay}" Grid.Row="5" Grid.Column="3" Margin="5"/>
+                    <TextBox x:Name="txtbx_fim6" Text="{Binding ClassFim6, Mode=TwoWay}" Grid.Row="6" Grid.Column="3" Margin="5"/>
+                    <TextBox x:Name="txtbx_fim7" Text="{Binding ClassFim7, Mode=TwoWay}" Grid.Row="7" Grid.Column="3" Margin="5"/>
+                    <TextBox x:Name="txtbx_fim8" Text="{Binding ClassFim8, Mode=TwoWay}" Grid.Row="8" Grid.Column="3" Margin="5"/>
+                    <TextBox x:Name="txtbx_fim9" Text="{Binding ClassFim9, Mode=TwoWay}" Grid.Row="9" Grid.Column="3" Margin="5"/>
+                    <TextBox x:Name="txtbx_fim10" Text="{Binding ClassFim10, Mode=TwoWay}" Grid.Row="10" Grid.Column="3" Margin="5"/>
+                    <TextBox x:Name="txtbx_fim11" Text="{Binding ClassFim11, Mode=TwoWay}" Grid.Row="11" Grid.Column="3" Margin="5"/>
+                    <TextBox x:Name="txtbx_fim12" Text="{Binding ClassFim12, Mode=TwoWay}" Grid.Row="12" Grid.Column="3" Margin="5"/>
+                    <TextBox x:Name="txtbx_fim13" Text="{Binding ClassFim13, Mode=TwoWay}" Grid.Row="13" Grid.Column="3" Margin="5"/>
+                    <TextBox x:Name="txtbx_fim14" Text="{Binding ClassFim14, Mode=TwoWay}" Grid.Row="14" Grid.Column="3" Margin="5"/>
+                    <TextBox x:Name="txtbx_fim15" Text="{Binding ClassFim15, Mode=TwoWay}" Grid.Row="15" Grid.Column="3" Margin="5"/>
+
+                    <!-- 15 TextBox abaixo de 'Qtd de Eixos' -->
+                    <TextBox x:Name="txtbx_qtdEixos1" Text="{Binding ClassQtdEixo1, Mode=TwoWay}" Grid.Row="1" Grid.Column="4" Margin="5"/>
+                    <TextBox x:Name="txtbx_qtdEixos2" Text="{Binding ClassQtdEixo2, Mode=TwoWay}" Grid.Row="2" Grid.Column="4" Margin="5"/>
+                    <TextBox x:Name="txtbx_qtdEixos3" Text="{Binding ClassQtdEixo3, Mode=TwoWay}" Grid.Row="3" Grid.Column="4" Margin="5"/>
+                    <TextBox x:Name="txtbx_qtdEixos4" Text="{Binding ClassQtdEixo4, Mode=TwoWay}" Grid.Row="4" Grid.Column="4" Margin="5"/>
+                    <TextBox x:Name="txtbx_qtdEixos5" Text="{Binding ClassQtdEixo5, Mode=TwoWay}" Grid.Row="5" Grid.Column="4" Margin="5"/>
+                    <TextBox x:Name="txtbx_qtdEixos6" Text="{Binding ClassQtdEixo6, Mode=TwoWay}" Grid.Row="6" Grid.Column="4" Margin="5"/>
+                    <TextBox x:Name="txtbx_qtdEixos7" Text="{Binding ClassQtdEixo7, Mode=TwoWay}" Grid.Row="7" Grid.Column="4" Margin="5"/>
+                    <TextBox x:Name="txtbx_qtdEixos8" Text="{Binding ClassQtdEixo8, Mode=TwoWay}" Grid.Row="8" Grid.Column="4" Margin="5"/>
+                    <TextBox x:Name="txtbx_qtdEixos9" Text="{Binding ClassQtdEixo9, Mode=TwoWay}" Grid.Row="9" Grid.Column="4" Margin="5"/>
+                    <TextBox x:Name="txtbx_qtdEixos10" Text="{Binding ClassQtdEixo10, Mode=TwoWay}" Grid.Row="10" Grid.Column="4" Margin="5"/>
+                    <TextBox x:Name="txtbx_qtdEixos11" Text="{Binding ClassQtdEixo11, Mode=TwoWay}" Grid.Row="11" Grid.Column="4" Margin="5"/>
+                    <TextBox x:Name="txtbx_qtdEixos12" Text="{Binding ClassQtdEixo12, Mode=TwoWay}" Grid.Row="12" Grid.Column="4" Margin="5"/>
+                    <TextBox x:Name="txtbx_qtdEixos13" Text="{Binding ClassQtdEixo13, Mode=TwoWay}" Grid.Row="13" Grid.Column="4" Margin="5"/>
+                    <TextBox x:Name="txtbx_qtdEixos14" Text="{Binding ClassQtdEixo14, Mode=TwoWay}" Grid.Row="14" Grid.Column="4" Margin="5"/>
+                    <TextBox x:Name="txtbx_qtdEixos15" Text="{Binding ClassQtdEixo15, Mode=TwoWay}" Grid.Row="15" Grid.Column="4" Margin="5"/>
+                </Grid>
+            </ScrollViewer>
+
+        </Grid>
+    </Grid>
+</Page>

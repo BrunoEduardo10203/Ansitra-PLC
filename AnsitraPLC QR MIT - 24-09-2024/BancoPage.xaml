@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AnsitraPLC_QR_MIT.BancoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AnsitraPLC_QR_MIT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    NavigationCacheMode="Enabled"
+    Background="#324848">
+
+
+    <Grid>
+        <TextBlock Text="Configuração do Banco de Dados" FontSize="28" FontWeight="SemiBold" Margin="100,40,0,0"/>
+        <Grid VerticalAlignment="Center">
+        
+        
+            <Grid Background="#2F4F4F"
+                Width="750"
+                Height="400"
+                CornerRadius="12"
+                BorderBrush="Gray"
+                BorderThickness="1"
+                Margin="0,70,0,0">
+
+
+                <!--Tipo-->
+                <TextBlock Text="Tipo:" Margin="100,50,0,0"/>
+                <ComboBox x:Name="cmbx_tipo"
+                          Margin="140,45,0,0"
+                          Width="200"
+                          SelectedValue="{Binding EstacaoSelecionada.tipo_banco, Mode=TwoWay}"
+                          SelectedValuePath="Content">
+                    <ComboBoxItem Content="Oracle"/>
+                    <ComboBoxItem Content="SQLServer"/>
+                </ComboBox>
+
+                <!--Host do Banco-->
+                <TextBlock Text="Host/Banco:" Margin="55,100,0,0"/>
+                <TextBox x:Name="txbx_host"
+                         AutomationProperties.Name="simple TextBox"
+                         Width="200"
+                         Height="0"
+                         HorizontalAlignment="Left"
+                         Margin="140,0,0,180"
+                         Text="{Binding EstacaoSelecionada.host_banco, Mode=TwoWay}" />
+
+                <!--Usuário-->
+                <TextBlock Text="Usuário:" Margin="80,150,0,0"/>
+                <TextBox x:Name="txbx_usuario"
+                         Width="200"
+                         Height="0"
+                         HorizontalAlignment="Left"
+                         Margin="140,0,0,80"
+                         Text="{Binding EstacaoSelecionada.usuario_banco, Mode=TwoWay}" />
+
+                <!--Porta-->
+                <TextBlock Text="Porta:" Margin="93,200,0,0"/>
+                <TextBox x:Name="txbx_porta"
+                         Width="90"
+                         Height="0"
+                         HorizontalAlignment="Left"
+                         Margin="140,20,0,0"
+                         Text="{Binding EstacaoSelecionada.porta_banco, Mode=TwoWay}" />
+
+                <!--Exibição-->
+                <TextBlock Text="Exibição:" Margin="80,250,0,0"/>
+                <ComboBox x:Name="cmb_exibicao"
+                          Width="90"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          Margin="140,120,0,0"
+                          SelectedValue="{Binding EstacaoSelecionada.exibicao_banco, Mode=TwoWay}"
+                          SelectedValuePath="Content">
+                    <ComboBoxItem Content="Mod 1"/>
+                    <ComboBoxItem Content="Mod 2"/>
+                    <ComboBoxItem Content="Mod 3"/>
+                </ComboBox>
+
+                <!--Serviço-->
+                <TextBlock Text="Serviço:" Margin="400,100,0,0"/>
+                <TextBox x:Name="txbx_servico"
+                         Width="200"
+                         Height="0"
+                         HorizontalAlignment="Left"
+                         Margin="455,0,0,180"
+                         Text="{Binding EstacaoSelecionada.servidor_banco, Mode=TwoWay}" />
+
+                <!--Senha-->
+                <TextBlock Text="Senha:" Margin="406,150,0,0"/>
+                <PasswordBox x:Name="txbx_senha"
+                             Width="200"
+                             Height="33"
+                             Margin="360,0,0,80" />
+
+
+                <Button x:Name="btn_limpar" Click="btn_limpar_Click" Style="{StaticResource AccentButtonStyle}" Content="Limpar todos os campos" Margin="0,0,118,275" HorizontalAlignment="Right"/>
+                <Button x:Name="btn_gravar" Click="btn_gravar_Click" Style="{StaticResource AccentButtonStyle}" Content="Gravar" Margin="220,250,0,0"/>
+                <Button x:Name="btn_teste" Style="{StaticResource AccentButtonStyle}" Content="Teste" Margin="420,250,0,0"/>
+
+            </Grid>
+            <Frame x:Name="ContentFrame">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition/>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+        </Grid>
+    </Grid>
+</Page>

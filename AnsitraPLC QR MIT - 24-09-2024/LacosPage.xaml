@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AnsitraPLC_QR_MIT.LacosPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AnsitraPLC_QR_MIT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    NavigationCacheMode="Enabled"
+    Background="#324848">
+
+    <Grid>
+
+        <TextBlock Text="Laços de comprimento e distância." FontSize="28" FontWeight="SemiBold" Margin="100,20,0,0"/>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,80,0,0">
+            <StackPanel Margin="0,0,0,0" Orientation="Vertical">
+                <!--Painel 1-->
+                <Expander x:Name="detector1"
+                          IsExpanded="True"
+                          ExpandDirection="Down"
+                          Width="800"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Top">
+
+                    <Expander.Header>
+                        <TextBlock Text="Detector 1" FontSize="20"/>
+                    </Expander.Header>
+
+                    <Expander.Content>
+                        
+                        <Grid Background="#2F4F4F"
+                              Width="760"
+                              Height="260"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              BorderThickness="1">
+
+                            <TextBlock/>
+                            <TextBlock Text="Comprimento do laços:"
+                                       VerticalAlignment="Top"
+                                       FontSize="20"
+                                       Margin="10,20,0,0"/>
+
+                            <TextBlock x:Name="txbxNomePD1" Text="{Binding NomeFaixa1, Mode=TwoWay}" Margin="120,0,0,80" VerticalAlignment="Center"/>
+                            <TextBox x:Name="compLaco1"
+                                     Text="{Binding CompLaco1, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco1Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="155,0,0,80"
+                                     PlaceholderText="Faixa 1"
+                                     />
+
+                            <TextBlock x:Name="txbxNomePD2" Text="{Binding NomeFaixa2, Mode=TwoWay}" Margin="250,0,0,80" VerticalAlignment="Center"/>
+                            <TextBox x:Name="compLaco2"
+                                     Text="{Binding CompLaco2, Mode=TwoWay}"                                     
+                                     IsEnabled="{Binding CompLaco2Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="285,0,0,80"
+                                     PlaceholderText="Faixa 2"
+                                     />
+
+                            <TextBlock x:Name="txbxNomePD3" Text="{Binding NomeFaixa3, Mode=TwoWay}" Margin="390,80,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="compLaco3"
+                                     Text="{Binding CompLaco3, Mode=TwoWay}"                                     
+                                     IsEnabled="{Binding CompLaco3Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     MaxLength="5"
+                                     Margin="160,0,0,80"
+                                     PlaceholderText="Faixa 3"
+                                     />
+
+                            <TextBlock x:Name="txbxNomePD4" Text="{Binding NomeFaixa4, Mode=TwoWay}" Margin="530,80,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="compLaco4"
+                                     Text="{Binding CompLaco4, Mode=TwoWay}"                                     
+                                     IsEnabled="{Binding CompLaco4Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Right"
+                                     MaxLength="5"
+                                     Margin="0,0,130,80"
+                                     PlaceholderText="Faixa 4"
+                                     />
+
+                            <TextBlock Text="Distancia entre laço:"
+                                       VerticalAlignment="Center"
+                                       FontSize="20"
+                                       Margin="10,30,0,0"/>
+
+
+                            <TextBlock Text="{Binding NomeFaixa1, Mode=TwoWay}" Margin="120,0,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco1"
+                                     Text="{Binding DistLaco1, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco1Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="155,0,0,45"
+                                     PlaceholderText="Faixa 1"
+                                     />
+
+
+                            <TextBlock Text="{Binding NomeFaixa2, Mode=TwoWay}" Margin="250,0,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco2"
+                                     Text="{Binding DistLaco2, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco2Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="285,0,0,45"
+                                     PlaceholderText="Faixa 2"
+                                     />
+
+
+                            <TextBlock Text="{Binding NomeFaixa3, Mode=TwoWay}" Margin="390,0,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco3"
+                                     Text="{Binding DistLaco3, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco3Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Center"
+                                     MaxLength="5"
+                                     Margin="160,0,0,45"
+                                     PlaceholderText="Faixa 3"
+                                     />
+
+                            <TextBlock Text="{Binding NomeFaixa4, Mode=TwoWay}" Margin="530,2,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco4"
+                                     Text="{Binding DistLaco4, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco4Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Right"
+                                     MaxLength="5"
+                                     Margin="0,0,130,45"
+                                     PlaceholderText="Faixa 4"
+                                     />
+
+                        </Grid>
+                    </Expander.Content>
+                </Expander>
+                
+                <!--Painel 2-->
+                <Expander x:Name="detector2"
+                          IsExpanded="True"
+                          ExpandDirection="Down"
+                          Width="800"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Top">
+
+                    <Expander.Header>
+                        <TextBlock Text="Detector 2" FontSize="20"/>
+                    </Expander.Header>
+
+                    <Expander.Content>
+     
+                        <Grid Background="#2F4F4F"
+                              Width="760"
+                              Height="260"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              BorderThickness="1">
+
+                            <TextBlock/>
+                            <TextBlock Text="Comprimento do laços:"
+                                       VerticalAlignment="Top"
+                                       FontSize="20"
+                                       Margin="10,20,0,0"/>
+
+                            <TextBlock Text="{Binding NomeFaixa5, Mode=TwoWay}" Margin="120,0,0,80" VerticalAlignment="Center"/>
+                            <TextBox x:Name="compLaco5"
+                                     Text="{Binding CompLaco5, Mode=TwoWay}"                                     
+                                     IsEnabled="{Binding CompLaco5Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="155,0,0,80"
+                                     PlaceholderText="Faixa 1"/>
+
+                            <TextBlock Text="{Binding NomeFaixa6, Mode=TwoWay}" Margin="250,0,0,80" VerticalAlignment="Center"/>
+                            <TextBox x:Name="compLaco6"
+                                     Text="{Binding CompLaco6, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco6Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="285,0,0,80"
+                                     PlaceholderText="Faixa 2"/>
+
+                            <TextBlock Text="{Binding NomeFaixa7, Mode=TwoWay}" Margin="390,80,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="compLaco7"
+                                     Text="{Binding CompLaco7, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco7Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     MaxLength="5"
+                                     Margin="160,0,0,80"
+                                     PlaceholderText="Faixa 3"/>
+
+                            <TextBlock Text="{Binding NomeFaixa8, Mode=TwoWay}" Margin="530,80,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="compLaco8"
+                                     Text="{Binding CompLaco8, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco8Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Right"
+                                     MaxLength="5"
+                                     Margin="0,0,130,80"
+                                     PlaceholderText="Faixa 4"/>
+
+                            <TextBlock Text="Distancia entre laço:"
+                                       VerticalAlignment="Center"
+                                       FontSize="20"
+                                       Margin="10,30,0,0"/>
+
+
+                            <TextBlock Text="{Binding NomeFaixa5, Mode=TwoWay}" Margin="120,0,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco5"
+                                     Text="{Binding DistLaco5, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco5Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="155,0,0,45"
+                                     PlaceholderText="Faixa 1"/>
+
+
+                            <TextBlock Text="{Binding NomeFaixa6, Mode=TwoWay}" Margin="250,0,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco6"
+                                     Text="{Binding DistLaco6, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco6Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="285,0,0,45"
+                                     PlaceholderText="Faixa 2"/>
+
+
+                            <TextBlock Text="{Binding NomeFaixa7, Mode=TwoWay}" Margin="390,0,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco7"
+                                     Text="{Binding DistLaco7, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco7Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Center"
+                                     MaxLength="5"
+                                     Margin="160,0,0,45"
+                                     PlaceholderText="Faixa 3"/>
+
+                            <TextBlock Text="{Binding NomeFaixa8, Mode=TwoWay}" Margin="530,2,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco8"
+                                     Text="{Binding DistLaco8, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco8Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Right"
+                                     MaxLength="5"
+                                     Margin="0,0,130,45"
+                                     PlaceholderText="Faixa 4"/>
+                        </Grid>
+                    </Expander.Content>
+                </Expander>
+                <!--Painel 3-->
+                <Expander x:Name="detector3"
+                          IsExpanded="True"
+                          ExpandDirection="Down"
+                          Width="800"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Top">
+
+                    <Expander.Header>
+                        <TextBlock Text="Detector 3" FontSize="20"/>
+                    </Expander.Header>
+
+                    <Expander.Content>
+
+                        <Grid Background="#2F4F4F"
+                              Width="760"
+                              Height="260"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              BorderThickness="1">
+
+                            <TextBlock/>
+                            <TextBlock Text="Comprimento do laços:"
+                                       VerticalAlignment="Top"
+                                       FontSize="20"
+                                       Margin="10,20,0,0"/>
+
+                            <TextBlock Text="{Binding NomeFaixa9, Mode=TwoWay}" Margin="120,0,0,80" VerticalAlignment="Center"/>
+                            <TextBox x:Name="compLaco9"
+                                     Text="{Binding CompLaco9, Mode=TwoWay}"                                     
+                                     IsEnabled="{Binding CompLaco9Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="155,0,0,80"
+                                     PlaceholderText="Faixa 1"/>
+
+                            <TextBlock Text="{Binding NomeFaixa10, Mode=TwoWay}" Margin="250,0,0,80" VerticalAlignment="Center"/>
+                            <TextBox x:Name="compLaco10"
+                                     Text="{Binding CompLaco10, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco10Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="285,0,0,80"
+                                     PlaceholderText="Faixa 2"/>
+
+                            <TextBlock Text="{Binding NomeFaixa11, Mode=TwoWay}" Margin="390,80,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="compLaco11"
+                                     Text="{Binding CompLaco11, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco11Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     MaxLength="5"
+                                     Margin="160,0,0,80"
+                                     PlaceholderText="Faixa 3"/>
+
+                            <TextBlock Text="{Binding NomeFaixa12, Mode=TwoWay}" Margin="530,80,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="compLaco12"
+                                     Text="{Binding CompLaco12, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco12Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Right"
+                                     MaxLength="5"
+                                     Margin="0,0,130,80"
+                                     PlaceholderText="Faixa 4"/>
+
+                            <TextBlock Text="Distancia entre laço:"
+                                       VerticalAlignment="Center"
+                                       FontSize="20"
+                                       Margin="10,30,0,0"/>
+
+
+                            <TextBlock Text="{Binding NomeFaixa9, Mode=TwoWay}" Margin="120,0,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco9"
+                                     Text="{Binding DistLaco9, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco9Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="155,0,0,45"
+                                     PlaceholderText="Faixa 1"/>
+
+
+                            <TextBlock Text="{Binding NomeFaixa10, Mode=TwoWay}" Margin="250,0,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco10"
+                                     Text="{Binding DistLaco10, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco10Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="285,0,0,45"
+                                     PlaceholderText="Faixa 2"/>
+
+
+                            <TextBlock Text="{Binding NomeFaixa11, Mode=TwoWay}" Margin="390,0,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco11"
+                                     Text="{Binding DistLaco11, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco11Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Center"
+                                     MaxLength="5"
+                                     Margin="160,0,0,45"
+                                     PlaceholderText="Faixa 3"/>
+
+                            <TextBlock Text="{Binding NomeFaixa12, Mode=TwoWay}" Margin="530,2,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco12"
+                                     Text="{Binding DistLaco12, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco12Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Right"
+                                     MaxLength="5"
+                                     Margin="0,0,130,45"
+                                     PlaceholderText="Faixa 4"/>
+                        </Grid>
+                    </Expander.Content>
+                </Expander>
+
+                <!--Painel 4-->
+                <Expander x:Name="detector4"
+                          IsExpanded="True"
+                          ExpandDirection="Down"
+                          Width="800"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Top">
+
+                    <Expander.Header>
+                        <TextBlock Text="Detector 4" FontSize="20"/>
+                    </Expander.Header>
+
+                    <Expander.Content>
+
+                        <Grid Background="#2F4F4F"
+                              Width="760"
+                              Height="260"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              BorderThickness="1">
+
+                            <TextBlock/>
+                            <TextBlock Text="Comprimento do laços:"
+                                       VerticalAlignment="Top"
+                                       FontSize="20"
+                                       Margin="10,20,0,0"/>
+
+                            <TextBlock Text="{Binding NomeFaixa13, Mode=TwoWay}" Margin="120,0,0,80" VerticalAlignment="Center"/>
+                            <TextBox x:Name="compLaco13"
+                                     Text="{Binding CompLaco13, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco13Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="155,0,0,80"
+                                     PlaceholderText="Faixa 1"/>
+
+                            <TextBlock Text="{Binding NomeFaixa14, Mode=TwoWay}" Margin="250,0,0,80" VerticalAlignment="Center"/>
+                            <TextBox x:Name="compLaco14"
+                                     Text="{Binding CompLaco14, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco14Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="285,0,0,80"
+                                     PlaceholderText="Faixa 2"/>
+
+                            <TextBlock Text="{Binding NomeFaixa15, Mode=TwoWay}" Margin="390,80,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="compLaco15"
+                                     Text="{Binding CompLaco15, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco15Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     MaxLength="5"
+                                     Margin="160,0,0,80"
+                                     PlaceholderText="Faixa 3"/>
+
+                            <TextBlock Text="{Binding NomeFaixa16, Mode=TwoWay}" Margin="530,80,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="compLaco16"
+                                     Text="{Binding CompLaco16, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco16Enabled}"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Right"
+                                     MaxLength="5"
+                                     Margin="0,0,130,80"
+                                     PlaceholderText="Faixa 4"/>
+
+                            <TextBlock Text="Distancia entre laço:"
+                                       VerticalAlignment="Center"
+                                       FontSize="20"
+                                       Margin="10,30,0,0"/>
+
+
+                            <TextBlock Text="{Binding NomeFaixa13, Mode=TwoWay}" Margin="120,0,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco13"
+                                     Text="{Binding DistLaco13, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco13Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="155,0,0,45"
+                                     PlaceholderText="Faixa 1"/>
+
+
+                            <TextBlock Text="{Binding NomeFaixa14, Mode=TwoWay}" Margin="250,0,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco14"
+                                     Text="{Binding DistLaco14, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco14Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Left"
+                                     MaxLength="5"
+                                     Margin="285,0,0,45"
+                                     PlaceholderText="Faixa 2"/>
+
+
+                            <TextBlock Text="{Binding NomeFaixa15, Mode=TwoWay}" Margin="390,0,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco15"
+                                     Text="{Binding DistLaco15, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco15Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Center"
+                                     MaxLength="5"
+                                     Margin="160,0,0,45"
+                                     PlaceholderText="Faixa 3"/>
+
+                            <TextBlock Text="{Binding NomeFaixa16, Mode=TwoWay}" Margin="530,2,0,50" VerticalAlignment="Bottom"/>
+                            <TextBox x:Name="distLaco16"
+                                     Text="{Binding DistLaco16, Mode=TwoWay}"
+                                     IsEnabled="{Binding CompLaco16Enabled}"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Right"
+                                     MaxLength="5"
+                                     Margin="0,0,130,45"
+                                     PlaceholderText="Faixa 4"/>
+                        </Grid>
+                    </Expander.Content>
+                </Expander>
+            </StackPanel>           
+        </ScrollViewer>        
+    </Grid>
+</Page>
