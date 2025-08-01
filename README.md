@@ -1,4 +1,5 @@
 🚧 Projeto de Monitoramento Rodoviário com WinUI 3
+
 Este repositório apresenta uma aplicação desenvolvida durante meu estágio na empresa Stine, com foco em monitoramento inteligente de rodovias. O projeto foi realizado individualmente ao longo de 10 meses, utilizando tecnologias como C#, XAML e WinUI 3, integrando comunicação com PLCs, banco de dados SQL e interface gráfica responsiva.
 
 🛠️ Tecnologias Utilizadas
